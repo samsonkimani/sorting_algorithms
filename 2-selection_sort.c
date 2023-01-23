@@ -10,40 +10,25 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, minindex, maxindex, left = 0, right = size - 1;
+	size_t i, j, position;
 	int swap;
 
 	if (array == NULL)
 		return;
-	while (left < right)
+	for (i = 0; i < size - 1; i++)
 	{
-		minindex = left;
-		maxindex = right;
-		for (i = left; i <= right; i++)
+		position = i;
+		for (j = i + 1; j < size; j++)
 		{
-			if (array[i] < array[minindex])
-				minindex = i;
-			if (array[i] > array[maxindex])
-				maxindex = i;
+			if (array[j] < array[position])
+				position = j;
 		}
-		if (minindex != left)
+		if (position != i)
 		{
-			swap = array[left];
-			array[left] = array[minindex];
-			array[minindex] = swap;
+			swap = array[i];
+			array[i] = array[position];
+			array[position] = swap;
+			print_array(array, size);
 		}
-
-		if (maxindex == left)
-			maxindex = minindex;
-
-		if (maxindex != right)
-		{
-			swap = array[right];
-			array[right] = array[maxindex];
-			array[maxindex] = swap;
-		}
-		print_array(array, size);
-		left++;
-		right--;
 	}
 }
