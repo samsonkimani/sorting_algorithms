@@ -13,19 +13,19 @@ void selection_sort(int *array, size_t size)
 	size_t i, j, position;
 	int swap;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		position = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[i] > array[j])
+			if (array[j] < array[position])
 				position = j;
-			if (position != i)
-			{
-				swap = array[i];
-				array[i] = array[position];
-				array[position] = swap;
-			}
+		}
+		if (position != 1)
+		{
+			swap = array[i];
+			array[i] = array[position];
+			array[position] = swap;
 		}
 		print_array(array, size);
 	}
