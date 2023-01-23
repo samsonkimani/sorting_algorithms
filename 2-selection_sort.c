@@ -20,7 +20,7 @@ void selection_sort(int *array, size_t size)
 		position = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[position])
+			if (array[position] > array[j])
 				position = j;
 		}
 		if (position != 1)
