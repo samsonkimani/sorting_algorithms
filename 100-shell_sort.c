@@ -14,6 +14,9 @@ void shell_sort(int *array, size_t size)
 	int interval = 1;
 	int i = 0;
 
+	if (array == NULL || size < 2)
+		return;
+
 	while (interval <= (int) size / 3)
 		interval = interval * 3 + 1;
 
@@ -33,7 +36,7 @@ void shell_sort(int *array, size_t size)
 			array[inner] = valuetoinsert;
 		}
 
-		interval = (interval - 1) / 3;
+		interval = (interval) / 3;
 		print_array(array, size);
 		i++;
 	}
